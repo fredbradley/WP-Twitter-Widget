@@ -4,7 +4,7 @@ Plugin Name: Fred's Twitter Widget
 Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
 Description: Something inspiring will arrive here soon!
 Author: Fred Bradley <fred@swipe.digital>
-Version: 1.2.5
+Version: 1.2.6
 Author URI: http://www.fredbradley.uk
 GitHub Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
 Github Branch:	master
@@ -34,7 +34,7 @@ class SwipeEmapTweet {
 			'js_function' => "showTweet",
 			'num_tweets' => 1
 		        // ...etc
-				), $atts );
+		), $atts );
 		$div = $a['div_id'];
 		$timeline_id = $a['timeline_id'];
 		$function_name = $a['js_function'];
