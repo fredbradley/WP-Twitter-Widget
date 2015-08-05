@@ -14,8 +14,7 @@ class SwipeEmapTweet {
 	function __construct() {
 		add_shortcode('emaptweet', array($this,'shortcode_swipe_copyright'));
 		add_action('wp_enqueue_scripts', array($this, 'add_script'));
-		add_action( 'widgets_init', 'register_widget' );
-
+		add_action( 'widgets_init', array($this, 'register_widget' ));
 	}
 	
 	// register Foo_Widget widget
