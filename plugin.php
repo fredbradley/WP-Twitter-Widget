@@ -4,7 +4,7 @@ Plugin Name: Fred's EMAP Tweet
 Plugin URI: http://tools.swipe.digital/cookie-widget
 Description: A one click install of Swipe's Cookie Widget, a bar showing cookie compliance at the bottom of your website.
 Author: Fred Bradley <fred@swipe.digital>
-Version: 1
+Version: 1.1
 Author URI: http://www.swipe.digital
 GitHub Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
 Github Branch:	master
