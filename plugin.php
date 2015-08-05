@@ -4,7 +4,7 @@ Plugin Name: Fred's Twitter Widget
 Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
 Description: Something inspiring will arrive here soon!
 Author: Fred Bradley <fred@swipe.digital>
-Version: 1.2.0
+Version: 1.2.1
 Author URI: http://www.fredbradley.uk
 GitHub Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
 Github Branch:	master
@@ -14,8 +14,15 @@ class SwipeEmapTweet {
 	function __construct() {
 		add_shortcode('emaptweet', array($this,'shortcode_swipe_copyright'));
 		add_action('wp_enqueue_scripts', array($this, 'add_script'));
+		add_action( 'widgets_init', 'register_widget' );
+
 	}
 	
+	// register Foo_Widget widget
+	function register_widget() {
+	    register_widget( 'FB_Twitter_Widget' );
+	}
+
 	function add_script() {
 		wp_enqueue_script('emapTweet-js', plugins_url('twitter-fetcher.js', __FILE__), array(), time(), false);
 		wp_enqueue_style('emapTweet-style', plugins_url('stylesheet.css', __FILE__), array(), time());
