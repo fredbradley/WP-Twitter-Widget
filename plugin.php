@@ -6,6 +6,8 @@ Description: A one click install of Swipe's Cookie Widget, a bar showing cookie 
 Author: Fred Bradley <fred@swipe.digital>
 Version: 1
 Author URI: http://www.swipe.digital
+GitHub Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
+Github Branch:	master
 */
 
 class SwipeEmapTweet {
