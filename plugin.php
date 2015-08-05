@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Fred's EMAP Tweet
-Plugin URI: http://tools.swipe.digital/cookie-widget
-Description: A one click install of Swipe's Cookie Widget, a bar showing cookie compliance at the bottom of your website.
+Plugin Name: Fred's Twitter Widget
+Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
+Description: Something inspiring will arrive here soon!
 Author: Fred Bradley <fred@swipe.digital>
-Version: 1.1
-Author URI: http://www.swipe.digital
+Version: 1.1.1
+Author URI: http://www.fredbradley.uk
 GitHub Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
 Github Branch:	master
 */
