@@ -29,8 +29,7 @@ class FB_Twitter_Widget extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		$arg = (object)$instance;
-		echo do_shortcode("[emaptweet div_id=\"".$arg->div_id.time()."\" js_function=\"".time().$arg->js_function."\" timeline_id=\"".$arg->timeline_id."\" num_tweets=\"".$arg->num_tweets."\"]");
-		echo __( 'Hello, World!', 'text_domain' );
+		echo do_shortcode("[emaptweet div_id=\"".$arg->div_id."\" js_function=\"".$arg->js_function."\" timeline_id=\"".$arg->timeline_id."\" num_tweets=\"".$arg->num_tweets."\"]");
 		echo $args['after_widget'];
 	}
 
