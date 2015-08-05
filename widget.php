@@ -46,7 +46,7 @@ class FB_Twitter_Widget extends WP_Widget {
 		$timeline_id = ! empty($instance['timeline_id']) ? $instance['timeline_id'] : __('Twitter Timeline ID', 'text_domain');
 		$js_function = ! empty($instance['js_function']) ? $instance['js_function'] : __('JS Function Name', 'text_domain');
 		
-		foreach ($this->fields as $field):
+		foreach ($this->fields() as $field):
 			$field = (object)$field;
 
 		?>
