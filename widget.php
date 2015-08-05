@@ -40,12 +40,53 @@ class FB_Twitter_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'New title', 'text_domain' );
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Follow Us On Twitter', 'text_domain' );
+		$num_tweets = ! empty( $instance['num_tweets'] ) ? $instance['num_tweets'] : __( '# of Tweets to pull in', 'text_domain' );
+		$div_id = ! empty($instance['div_id']) ? $instance['div_id'] : __('The ID of the DIV', 'text_domain');
+		$timeline_id = ! empty($instance['timeline_id']) ? $instance['timeline_id'] : __('Twitter Timeline ID', 'text_domain');
+		$js_function = ! empty($instance['js_function']) ? $instance['js_function'] : __('JS Function Name', 'text_domain');
+		
+		foreach ($this->fields as $field):
+			$field = (object)$field;
+
 		?>
+		
+		<p>
+		<label for="<?php echo $this->get_field_id( $field->id ); ?>"><?php _e( $field->title.' :' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( $field->id ); ?>" name="<?php echo $this->get_field_name( $field->id ); ?>" type="text" value="<?php echo esc_attr( $field->value ); ?>">
+		<span><?php echo $field->desc; ?></span>
+		</p>
+		
+		<?php endforeach; ?>
+		
 		<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
+		
+		<p>
+		<label for="<?php echo $this->get_field_id( 'num_tweets' ); ?>"><?php _e( '# Tweets:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'num_tweets' ); ?>" name="<?php echo $this->get_field_name( 'num_tweets' ); ?>" type="text" value="<?php echo esc_attr( $num_tweets ); ?>">
+		</p>
+		
+		
+		<p>
+		<label for="<?php echo $this->get_field_id( 'div_id' ); ?>"><?php _e( 'DIV ID:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'div_id' ); ?>" name="<?php echo $this->get_field_name( 'div_id' ); ?>" type="text" value="<?php echo esc_attr( $div_id ); ?>">
+		</p>
+		
+		<p>
+		<label for="<?php echo $this->get_field_id( 'timeline_id' ); ?>"><?php _e( 'Timeline ID:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'timeline_id' ); ?>" name="<?php echo $this->get_field_name( 'timeline_id' ); ?>" type="text" value="<?php echo esc_attr( $timeline_id ); ?>">
+		</p>
+		
+		<p>
+		<label for="<?php echo $this->get_field_id( 'js_function' ); ?>"><?php _e( 'Javascript Function:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'js_function' ); ?>" name="<?php echo $this->get_field_name( 'js_function' ); ?>" type="text" value="<?php echo esc_attr( $js_function ); ?>">
+		</p>
+		
+		
+		
 		<?php 
 	}
 
@@ -64,6 +105,21 @@ class FB_Twitter_Widget extends WP_Widget {
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
 		return $instance;
+	}
+	private function form_field($id, $title, $value, $description=null) {
+		return array(
+			"id" => $id, 
+			"title" => $title,
+			"value" => $value,
+			"desc" => $description
+		);
+	}
+	private function fields() {
+		$array = array(
+			$this->form_field("title", "Title", "Follow Us on Twit Twit", "Here is a desc"),
+			$this->form_field("js_function", "Javascript Function", "showtweet")
+		);
+		return $array;
 	}
 
 } // class Foo_Widget

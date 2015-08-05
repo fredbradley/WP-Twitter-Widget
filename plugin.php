@@ -4,7 +4,7 @@ Plugin Name: Fred's Twitter Widget
 Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
 Description: Something inspiring will arrive here soon!
 Author: Fred Bradley <fred@swipe.digital>
-Version: 1.2.2
+Version: 1.2.3
 Author URI: http://www.fredbradley.uk
 GitHub Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
 Github Branch:	master
