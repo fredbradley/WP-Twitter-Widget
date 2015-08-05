@@ -10,8 +10,8 @@ class FB_Twitter_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'fb_twitter_widget', // Base ID
-			__( 'Widget Title', 'text_domain' ), // Name
-			array( 'description' => __( 'A Foo Widget', 'text_domain' ), ) // Args
+			__( 'Twitter Widget', 'text_domain' ), // Name
+			array( 'description' => __( 'A custom Twitter timeline widget by Fred Bradley', 'text_domain' ), ) // Args
 		);
 	}
 
