@@ -266,11 +266,13 @@
               targetLinksToNewWindow(authors[n]);
             }
           }
+          op += '<div class="user-and-tweet-container">';
           if (printUser) {
             op += '<div class="user">' + strip(authors[n].innerHTML) +
                 '</div>';
           }
           op += '<p class="tweet">' + strip(tweets[n].innerHTML) + '</p>';
+          op += '</div>';
 		  if (showImages && images[n]!== undefined) {
 		  	op += tweetMedia;
           }
@@ -287,10 +289,12 @@
           // ELSE IF NO PARSE LINKS
         } else {
           if (tweets[n].innerText) {
+	          op += '<div class="user-and-tweet-container">';
             if (printUser) {
               op += '<p class="user">' + authors[n].innerText + '</p>';
             }
             op += '<p class="tweet">' +  tweets[n].innerText + '</p>';
+            op += '</div>';
             if (showImages && images[n]!== undefined) {
 	            op += tweetMedia;
             }
@@ -299,10 +303,12 @@
             }
 
           } else {
+	          op += '<div class="user-and-tweet-container">';
             if (printUser) {
               op += '<p class="user">' + authors[n].textContent + '</p>';
             }
             op += '<p class="tweet">' +  tweets[n].textContent + '</p>';
+            op += '</div>';
             if (showImages && images[n]!== undefined) {
 	            op += tweetMedia;
             }

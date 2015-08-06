@@ -1,11 +1,16 @@
 .a-tweet {
   margin-bottom: 20px; }
+  .a-tweet .user-and-tweet-container div,
+  .a-tweet .user-and-tweet-container p {
+    display: block; }
   .a-tweet .user {
-    position: absolute;
-    left: 25px;
-    width: 50px; }
+    /*position: absolute;*/
+    float: left;
+    width: 50px;
+    margin: 5px; }
   .a-tweet p.tweet {
-    margin-left: 50px; }
+    /*margin-left: 50px;*/
+    clear: right; }
   .a-tweet .user span {
     display: none; }
   .a-tweet .user > a > span > span {

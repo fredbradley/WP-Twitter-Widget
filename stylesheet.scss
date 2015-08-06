@@ -1,12 +1,19 @@
 .a-tweet {
+	.user-and-tweet-container div,
+	.user-and-tweet-container p {
+		display: block;
+	}
 	margin-bottom: 20px;
 	.user {
-		position: absolute;
-		left:25px;
+		/*position: absolute;*/
+		float:left;
 		width:50px;
+		margin:5px;
+		
 	}
 	p.tweet {
-		margin-left: 50px;
+		/*margin-left: 50px;*/
+		clear:right;
 	}
 	.user span {
 		display:none;
