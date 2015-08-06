@@ -16,7 +16,7 @@ Upon installing and activating, nothing will happen just yet.
 
 There are two ways of using this plugin. Both ways can be used multiple times in one Wordpress installation.
 
-### As A Short-code
+### 1. As A Short-code
 
 Use the short-code to place your Twitter widget anywhere on your site.
 
@@ -35,9 +35,13 @@ Use the short-code to place your Twitter widget anywhere on your site.
 
 `[fb_twitter_widget num_tweets="3" timeline_id="615814546540900352" div_id="my_twitter_div" js_function="my_get_tweets"]`
 
-### As A Widget
+### 2. As A Widget
 
 We've also created a Widget so that you can easily place your Twitter Timeline in your sidebars and footers.
+
+This has the same parameters but in form format. See screenshot:
+
+![Widget Screenshot](https://raw.githubusercontent.com/fredbradley/WP-Twitter-Widget/master/widget_screenshot.png)
 
 ## User Feedback
 
