@@ -254,6 +254,11 @@
           }
         }
         var op = '';
+         if (showImages && images[n] !== undefined) {
+          var tweetMedia = '<div class="media tweet-media"><a target="_blank" href="' + permalinksURL[n] +  '">' +
+              '<img class="img-responsive" src="' + extractImageUrl(images[n]) +
+              '" alt="Image from tweet" /></a>' + '</div>';
+        }
         if (parseLinks) {
           if (targetBlank) {
             targetLinksToNewWindow(tweets[n]);
@@ -266,23 +271,31 @@
                 '</div>';
           }
           op += '<p class="tweet">' + strip(tweets[n].innerHTML) + '</p>';
+		  if (showImages && images[n]!== undefined) {
+		  	op += tweetMedia;
+          }
           if (printTime) {
             if (permalinks) {
-              op += '<p class="timePosted"><a href="' + permalinksURL[n] +
+              op += '<p class="timePosted"><i class="fa fa-clock-o fa-fw"></i><a href="' + permalinksURL[n] +
                  '">' + times[n].getAttribute('aria-label') + '</a></p>';
             } else {
-              op += '<p class="timePosted">' +
+              op += '<p class="timePosted"><i class="fa fa-clock-o fa-fw"></i>' +
                   times[n].getAttribute('aria-label') + '</p>';
             }
           }
+          
+          // ELSE IF NO PARSE LINKS
         } else {
           if (tweets[n].innerText) {
             if (printUser) {
               op += '<p class="user">' + authors[n].innerText + '</p>';
             }
             op += '<p class="tweet">' +  tweets[n].innerText + '</p>';
+            if (showImages && images[n]!== undefined) {
+	            op += tweetMedia;
+            }
             if (printTime) {
-              op += '<p class="timePosted">' + times[n].innerText + '</p>';
+              op += '<p class="timePosted"><i class="fa fa-clock-o fa-fw"></i>' + times[n].innerText + '</p>';
             }
 
           } else {
@@ -290,12 +303,18 @@
               op += '<p class="user">' + authors[n].textContent + '</p>';
             }
             op += '<p class="tweet">' +  tweets[n].textContent + '</p>';
+            if (showImages && images[n]!== undefined) {
+	            op += tweetMedia;
+            }
             if (printTime) {
-              op += '<p class="timePosted">' + times[n].textContent + '</p>';
+              op += '<p class="timePosted"><i class="fa fa-clock-o fa-fw"></i>' + times[n].textContent + '</p>';
             }
           }
         }
+        
+       
         if (showInteractionLinks) {
+	        op += '<div class="interactions">';
           op += '<p class="interact"><a href="https://twitter.com/intent/' +
               'tweet?in_reply_to=' + tids[n] + '" class="twitter_reply_icon"' +
               (targetBlank ? ' target="_blank">' : '>') +
@@ -305,13 +324,10 @@
               '<a href="https://twitter.com/intent/favorite?tweet_id=' +
               tids[n] + '" class="twitter_fav_icon"' +
               (targetBlank ? ' target="_blank">' : '>') + 'Favorite</a></p>';
+			op += '</div>';
         }
 
-        if (showImages && images[n] !== undefined) {
-          op += '<div class="media">' +
-              '<img src="' + extractImageUrl(images[n]) +
-              '" alt="Image from tweet" />' + '</div>';
-        }
+        
 
         arrayTweets.push(op);
         n++;

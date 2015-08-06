@@ -4,7 +4,7 @@ Plugin Name: Fred's Twitter Widget
 Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
 Description: Something inspiring will arrive here soon!
 Author: Fred Bradley <fred@swipe.digital>
-Version: 1.3.9
+Version: 1.4.0
 Author URI: http://www.fredbradley.uk
 GitHub Plugin URI: https://github.com/fredbradley/WP-Twitter-Widget
 Github Branch:	master
@@ -28,46 +28,101 @@ class SwipeEmapTweet {
 		wp_enqueue_style('emapTweet-style', plugins_url('stylesheet.css', __FILE__), array(), time());
 	}
 	function the_shortcode( $atts, $content = null ) {
-		$a = shortcode_atts( array(
+		$config = shortcode_atts( array(
 			'div_id' => 'emaptweet',
 			'timeline_id' => '615814546540900352',
 			'js_function' => "showTweet",
-			'num_tweets' => 1
+			'num_tweets' => 1,
+			'show_user' => false,
+			'show_links' => true,
+			"hide_rts" => true,
+			"hide_interaction" => false,
+			"hide_timestamp" => false,
+			"show_images" => false,
+			
 		        // ...etc
 		), $atts );
-		$div = $a['div_id'];
-		$timeline_id = $a['timeline_id'];
-		$function_name = $a['js_function'];
-		$num_tweets = $a['num_tweets'];
-
-		return $this->show($function_name, $div, $timeline_id, $num_tweets);
+		return $this->show($config);
 	}
 	
-	function show($function, $div_id, $timeline_id, $num_tweets) {
-		return "<script type='text/javascript'>
-		twitterFetcher.fetch('".$timeline_id."', '".$div_id."', ".$num_tweets.", true, false, false, '', true, ".$function.");
+	
+	function show($config) {
+		$config = (object)$config;
+		$javascript_config_name = "config_".$config->js_function;
+		$output = " <div id=\"".$config->div_id."\"></div>";
+		$output .= "
+<script type='text/javascript'>
+		var ".$javascript_config_name." = {
+			id:'".$config->timeline_id."',
+			domId:'".$config->js_function."',
+			maxTweets:".$config->num_tweets.",
+			showUser:false,
+			lang:'en',
+			showImages:false,
+			enableLinks: true,
+			customCallback: ".$config->js_function."
+		};";
+		
+		$output .= "\n\n";
+		if ($config->show_links === false) {
+			$output .= $javascript_config_name.".enableLinks=false;";
+		}
+		if ($config->show_user) {
+			$output .= "\n\n";
+			$output .= $javascript_config_name.".showUser=true;";
+		}
+		if ($config->show_time) {
+			$output .= "\n\n";
+			$output .= $javascript_config_name.".showTime=true;";
+		}
+		if ($config->hide_rts) {
+			$output .= "\n\n";
+			$output .= $javascript_config_name.".showRetweet=false;";
+		}
+		if ($config->hide_interaction) {
+			$output .= "\n\n";
+			$output .= $javascript_config_name.".showInteraction=false;";
+		}
+		if ($config->hide_timestamp) {
+			$output .= "\n\n";
+			$output .= $javascript_config_name.".showTime=false;";
+		}
+		if ($config->show_images) {
+			$output .= "\n\n";
+			$output .= $javascript_config_name.".showImages=true;";
+		}
+		$output .= "
+	
+		
+		function ".$config->js_function."(tweets){
+			var x = tweets.length;
+			var n = 0;
+			var element = document.getElementById('".$config->div_id."');
+			var html = '<!-- START --><div class=\"fb_twitter_widget\">';
+			while(n < x) {
+				html += '<div class=\"a-tweet\">' + tweets[n] + '</div>';
+				n++;
+			}
+			html += '</div><!-- END -->';
+			element.innerHTML = html;
+		}
 
-function ".$function."(tweets){
-    var x = tweets.length;
-    var n = 0;
-    var element = document.getElementById('".$div_id."');
-    var html = '<p>';
-    while(n < x) {
-      html += '' + tweets[n] + '';
-      n++;
-    }
-    html += '</p>';
-    element.innerHTML = html;
-}
-window.onload = function() {
-var linkList = document.querySelectorAll('.tweet a');
+		
+		twitterFetcher.fetch(".$javascript_config_name.");
+		
+		window.onLoad = function() {
+			var linkList = document.querySelectorAll('.tweet a');
 
-for(var i in linkList){
- linkList[i].setAttribute('target', '_blank');
- }
- };
-</script><div id=\"".$div_id."\"></div>";
-
+			for(var i in linkList){
+				linkList[i].setAttribute('target', '_blank');
+			}
+		};
+ </script>
+		
+		";
+		return $output;
+		$check_code = "yes";
 	}
+	
 }
 $swipeemaptweet = new SwipeEmapTweet();

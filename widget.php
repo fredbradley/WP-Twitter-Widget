@@ -29,10 +29,28 @@ class FB_Twitter_Widget extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		$arg = (object)$instance;
-		echo do_shortcode("[fb_twitter_widget div_id=\"".$arg->div_id."\" js_function=\"".$arg->js_function."\" timeline_id=\"".$arg->timeline_id."\" num_tweets=\"".$arg->num_tweets."\"]");
+		echo do_shortcode("[fb_twitter_widget 
+			div_id=\"".$arg->div_id."\" 
+			js_function=\"".$arg->js_function."\" 
+			timeline_id=\"".$arg->timeline_id."\" 
+			num_tweets=\"".$arg->num_tweets."\" 
+			show_images=\"".$arg->show_images."\" 
+			hide_timestamp=\"".$arg->hide_timestamp."\" 
+			show_user=\"".$arg->show_user."\" 
+			show_links=\"".$arg->show_links."\" 
+			hide_rts=\"".$arg->hide_rts."\"
+			hide_interaction=\"".$arg->hide_interaction."\" 
+			]");
 		echo $args['after_widget'];
 	}
 
+
+	public function bool_options() {
+		return array(
+			"Yes" => 1,
+			"No" => 0
+		);
+	}
 	/**
 	 * Back-end widget form.
 	 *
@@ -45,8 +63,27 @@ class FB_Twitter_Widget extends WP_Widget {
 		foreach ($this->fields() as $field):
 			$field = (object)$field;
 			$esc_value = ! empty( $instance[$field->id] ) ? $instance[$field->id] : __( $field->value, 'text_domain' );
+			if ($field->type == "bool"):
+			?>
+			<p>
+		<label for="<?php echo $this->get_field_id( $field->id ); ?>"><?php _e( $field->title.' :' ); ?></label> 
+		<select class="widefat" id="<?php echo $this->get_field_id($field->id); ?>" name="<?php echo $this->get_field_name($field->id); ?>">
+			<option value="">--Please Select--</option>
+			<?php 
+				foreach ($this->bool_options() as $option => $value):
+					if ($value==esc_attr($esc_value)):
+						$sel = "selected=\"selected\"";
+					else:
+						$sel = "";
+					endif;			?>
+			<option value="<?php echo $value; ?>" <?php echo $sel; ?>><?php echo $option; ?></option>
+			<?php endforeach; ?>
+		</select>
+		<span><?php echo $field->desc; ?></span>
+		</p>
 
-
+			<?php
+			else:
 		?>
 		
 		<p>
@@ -55,7 +92,8 @@ class FB_Twitter_Widget extends WP_Widget {
 		<span><?php echo $field->desc; ?></span>
 		</p>
 		
-		<?php endforeach; 
+		<?php endif;
+			endforeach; 
 	}
 
 	/**
@@ -72,7 +110,11 @@ class FB_Twitter_Widget extends WP_Widget {
 		$instance = array();
 		foreach ($this->fields() as $field):
 			$field = (object)$field;
-			$instance[$field->id] = ( ! empty( $new_instance[$field->id] ) ) ? strip_tags( $new_instance[$field->id] ) : '';
+			if ($field->type === "bool"):
+				(bool)$instance[$field->id] = ( ! empty( $new_instance[$field->id] ) ) ? strip_tags( $new_instance[$field->id] ) : '';
+			else:
+				$instance[$field->id] = ( ! empty( $new_instance[$field->id] ) ) ? strip_tags( $new_instance[$field->id] ) : '';
+			endif;
 		endforeach;
 		return $instance;
 	}
@@ -88,8 +130,9 @@ class FB_Twitter_Widget extends WP_Widget {
 	 * @param mixed $description (default: null)
 	 * @return void
 	 */
-	private function form_field($id, $title, $value, $description=null) {
+	private function form_field($type, $id, $title, $value, $description=null) {
 		return array(
+			"type" => $type,
 			"id" => $id, 
 			"title" => $title,
 			"value" => $value,
@@ -107,11 +150,17 @@ class FB_Twitter_Widget extends WP_Widget {
 	 */
 	private function fields() {
 		$array = array(
-			$this->form_field("title", "Title", "Follow Us on Twit Twit", "Here is a desc"),
-			$this->form_field("js_function", "Javascript Function", "showtweet"),
-			$this->form_field("num_tweets", "# Tweets", 3, "# of Tweets of Pull"),
-			$this->form_field("timeline_id", "Twitter Timeline ID", "2490909"),
-			$this->form_field("div_id", "DIV ID", "emaptweet", "The ID of the Div you wish to populate")
+			$this->form_field("text","title", "Title", "Follow Us on Twit Twit", "Here is a desc"),
+			$this->form_field("text","js_function", "Javascript Function", "showtweet"),
+			$this->form_field("text","num_tweets", "# Tweets", 3, "# of Tweets of Pull"),
+			$this->form_field("text","timeline_id", "Twitter Timeline ID", "2490909"),
+			$this->form_field("text","div_id", "DIV ID", "emaptweet", "The ID of the Div you wish to populate"),
+			$this->form_field("bool","show_user", "Show User", false),
+			$this->form_field("bool","show_links", "Show Links", false),
+			$this->form_field("bool","hide_rts", "Hide Retweets", false),
+			$this->form_field("bool","hide_interaction", "Hide Interaction Buttons", false),
+			$this->form_field("bool","hide_timestamp", "Hide Timestamp", false),
+			$this->form_field("bool","show_images", "Show Images Inline", false),
 		);
 		return $array;
 	}

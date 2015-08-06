@@ -1,1 +1,57 @@
-p.interact a{background:url("twitter-sprite.png");display:inline-block;height:16px;width:17px;text-indent:-9999px;color:#000}p.interact a.twitter_reply_icon,p.interact a.twitter_retweet_icon,p.interact a.twitter_fav_icon{margin:0 5px 0 0}p.interact a.twitter_fav_icon{background-position-x:-31px;width:18px}p.interact a.twitter_fav_icon:hover{background-position-x:-47px}p.interact a.twitter_retweet_icon{background-position-x:-80px;width:19px}p.interact a.twitter_retweet_icon:hover{background-position-x:-99px}p.interact a.twitter_reply_icon{background-position-x:0px;width:16px}p.interact a.twitter_reply_icon:hover{background-position-x:-16px}
+.a-tweet {
+  margin-bottom: 20px; }
+  .a-tweet .user {
+    position: absolute;
+    left: 25px;
+    width: 50px; }
+  .a-tweet p.tweet {
+    margin-left: 50px; }
+  .a-tweet .user span {
+    display: none; }
+  .a-tweet .user > a > span > span {
+    display: none; }
+  .a-tweet img.emoji {
+    display: none; }
+
+p.interact a {
+  background: url("twitter-sprite.png");
+  display: inline-block;
+  height: 16px;
+  width: 17px;
+  text-indent: -9999px !important;
+  color: #00f; }
+p.interact a.twitter_reply_icon,
+p.interact a.twitter_retweet_icon,
+p.interact a.twitter_fav_icon {
+  width: 33.3%;
+  margin: 0 5px 0 0; }
+p.interact a.twitter_fav_icon {
+  background-position-x: -31px;
+  width: 18px; }
+  p.interact a.twitter_fav_icon:hover {
+    background-position-x: -47px; }
+p.interact a.twitter_retweet_icon {
+  background-position-x: -80px;
+  width: 19px; }
+  p.interact a.twitter_retweet_icon:hover {
+    background-position-x: -99px; }
+p.interact a.twitter_reply_icon {
+  background-position-x: 0px;
+  width: 16px; }
+  p.interact a.twitter_reply_icon:hover {
+    background-position-x: -16px; }
+
+.tweet-media {
+  display: block; }
+  .tweet-media .img-responsive {
+    max-width: 100% !important;
+    border: 5px solid #ccc; }
+    .tweet-media .img-responsive:hover {
+      border-color: rgba(0, 0, 0, 0.3); }
+
+p.timePosted {
+  clear: both;
+  text-align: right;
+  display: block; }
+
+/*# sourceMappingURL=stylesheet.css.map */
