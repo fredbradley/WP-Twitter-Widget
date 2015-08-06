@@ -1,0 +1,40 @@
+p.interact {
+	a {
+		background:url("twitter-sprite.png"); /* Obviously make sure that twitter-sprite.png is included in your template! */
+		display: inline-block;
+		height: 16px;
+		width: 17px;
+		text-indent: -9999px;
+		color:#000;
+	}
+	
+	a.twitter_reply_icon,
+	a.twitter_retweet_icon,
+	a.twitter_fav_icon {
+		margin: 0 5px 0 0;
+	}
+	
+	a.twitter_fav_icon {
+		background-position-x: 31px;
+		width:18px;
+		&:hover {
+			background-position-x: -47px;
+		}
+	}
+	
+	a.twitter_retweet_icon {
+		background-position-x: -80px;
+		width:19px;
+		&:hover {
+			background-position-x: -99px;
+		}
+	}
+	
+	a.twitter_reply_icon {
+		background-position-x: 0px;
+		width:16px;
+		&:hover {
+			background-position-x: -16px;
+		}
+	}
+}
