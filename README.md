@@ -4,6 +4,14 @@ By [Fred Bradley](http://fred.im)
 
 A widget and short-code for Wordpress installations that will fetch tweets from the [Twitter Widget Timeline](https://dev.twitter.com/web/embedded-timelines) and display them using Javascript on your page.
 
+### Table Of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [User Feedback](#user-feedback)
+* [Developer](#developer)
+* [License](#license)
+* [Copyright](#copyright)
+
 ## Installation
 
 Take download of the [latest release](https://github.com/fredbradley/WP-Twitter-Widget/releases/latest) from this repository.
