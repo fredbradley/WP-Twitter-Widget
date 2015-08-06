@@ -31,6 +31,10 @@ Use the short-code to place your Twitter widget anywhere on your site.
 | div_id | No. (Unless multiple occurrences on the same page) | `emaptweet` | The ID of the div where the Javascript will place the twitter timeline |
 | js_function | No. (Unless multiple occurrences on the same page) | `showTweet` | We have to name the function that does the hard work. If you are pulling in more than one timeline you will have more than one function, so therefore they need difference names! |
 
+#### Example
+
+`[fb_twitter_widget num_tweets="3" timeline_id="615814546540900352" div_id="my_twitter_div" js_function="my_get_tweets"]`
+
 ### As A Widget
 
 We've also created a Widget so that you can easily place your Twitter Timeline in your sidebars and footers.
