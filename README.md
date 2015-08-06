@@ -24,10 +24,12 @@ Use the short-code to place your Twitter widget anywhere on your site.
 
 #### Parameters
 
-1.  **div_id** _(default: emaptweet)_
-2.  **timeline_id** _(default: 615814546540900352)_
-3.  **js_function** _(default: showTweet)_
-4.  **num_tweets** _(default: 1)_
+| Param Name | Required? | Default Value | Description |
+| --- | --- | --- | --- | --- |
+| timeline_id | Yes | `null` | Find out how to find your Twitter Timeline ID |
+| num_tweets | No | `1` | How many latest Tweets do you want to pull in from your timeline? |
+| div_id | No. (Unless multiple occurrences on the same page) | `emaptweet` | The ID of the div where the Javascript will place the twitter timeline |
+| js_function | No. (Unless multiple occurrences on the same page) | `showTweet` | We have to name the function that does the hard work. If you are pulling in more than one timeline you will have more than one function, so therefore they need difference names! |
 
 ### As A Widget
 
