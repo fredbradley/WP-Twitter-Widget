@@ -1,28 +1,68 @@
-=== WP Twitter Widget ===
-Contributors: fredbradley
-Tags: twitter, timeline, widget, shortcode, plugin
-Requires at least: 3.0.0
-Tested up to: 4.2.4
-Stable tag: 4.2.4
+# Twitter Timeline Widget
 
-Install a Twitter timeline Widget that matches the style of your site and don’t use IFRAMEs!
+By [Fred Bradley](http://fred.im)
 
-== Description ==
-Isn’t the standard Twitter Timeline widget a bore? Wouldn’t it be nice to have something that is styled similar to your own website. 
+A widget and short-code for Wordpress installations that will fetch tweets from the [Twitter Widget Timeline](https://dev.twitter.com/web/embedded-timelines) and display them using Javascript on your page.
 
+## Installation
 
-== Installation ==
-Install as you normally would for any other Wordpress plugin. 
+Take download of the [latest release](https://github.com/fredbradley/WP-Twitter-Widget/releases/latest) from this repository.
 
-Ensure the plugin is activated. From this moment the plugin is installed and will be shown on your site. 
+Install that by uploading the ZIP file as a new plugin into your Wordpress installation. Finally, ensure that you have activated the plugin.
 
-== Frequently Asked Questions == 
-= Can I email you? =
-I’d rather you didn’t, but you will find my email address on the plugin.php file!
+## Usage
 
-== Changelog == 
-= 1.1 = 
- * Styled the settings page
- 
-= 1.0 =
- * Initial Upload
+Upon installing and activating, nothing will happen just yet.
+
+There are two ways of using this plugin. Both ways can be used multiple times in one Wordpress installation.
+
+### As A Short-code
+
+Use the short-code to place your Twitter widget anywhere on your site.
+
+`[fb_twitter_widget]` will set up your timeline with default parameters.
+
+#### Parameters
+
+1.  **div_id** _(default: emaptweet)_
+2.  **timeline_id** _(default: 615814546540900352)_
+3.  **js_function** _(default: showTweet)_
+4.  **num_tweets** _(default: 1)_
+
+### As A Widget
+
+We've also created a Widget so that you can easily place your Twitter Timeline in your sidebars and footers.
+
+## User Feedback
+
+### Issues
+
+If you have any problems with or questions about this plugin, please contact the developer(s) through a [GitHub issue](https://github.com/fredbradley/WP-Twitter-Widget/issues).
+
+### Contributing
+
+This is an open source plugin. We would love you to contribute to help make the plugin better.
+
+You are invited to contribute new features, fixes, or updates, large or small; we are always thrilled to receive pull requests, and do our best to process them as fast as we can.
+
+Before you start to code, we recommend discussing your plans through a [GitHub issue](https://github.com/fredbradley/WP-Twitter-Widget/issues), especially for more ambitious contributions. This gives other contributors a chance to point you in the right direction, give you feedback on your design, and help you find out if someone else is working on the same thing.
+
+## Developer
+
+*   Fred Bradley (https://github.com/fredbradley)
+
+## Credits and Mentions
+
+*   Jason Mayes (https://github.com/jasonmayes/) for the core Javascript that gets the tweets (https://github.com/jasonmayes/Twitter-Post-Fetcher)
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) [2015] [Fred Bradley]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
