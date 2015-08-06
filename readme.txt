@@ -52,6 +52,7 @@ This has the same parameters but in form format. See screenshot:
 I’d rather you didn’t, but you will find my email address on the plugin.php file!
 
 == Changelog == 
+
 = 1.3.2 = 
  * Added readme.txt
  
