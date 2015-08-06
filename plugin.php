@@ -12,7 +12,7 @@ Github Branch:	master
 
 class SwipeEmapTweet {
 	function __construct() {
-		add_shortcode('emaptweet', array($this,'shortcode_swipe_copyright'));
+		add_shortcode('fb_twitter_widget', array($this,'the_shortcode'));
 		add_action('wp_enqueue_scripts', array($this, 'add_script'));
 		add_action( 'widgets_init', array($this, 'register_widget' ));
 	}
@@ -27,7 +27,7 @@ class SwipeEmapTweet {
 		wp_enqueue_script('emapTweet-js', plugins_url('twitter-fetcher.js', __FILE__), array(), time(), false);
 		wp_enqueue_style('emapTweet-style', plugins_url('stylesheet.css', __FILE__), array(), time());
 	}
-	function shortcode_swipe_copyright( $atts, $content = null ) {
+	function the_shortcode( $atts, $content = null ) {
 		$a = shortcode_atts( array(
 			'div_id' => 'emaptweet',
 			'timeline_id' => '615814546540900352',
