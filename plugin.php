@@ -15,8 +15,8 @@ class SwipeEmapTweet {
 		add_shortcode('fb_twitter_widget', array($this,'the_shortcode'));
 		add_action('wp_enqueue_scripts', array($this, 'add_script'));
 		add_action( 'widgets_init', array($this, 'register_widget' ));
+		add_action('admin_notices', array($this, 'fredtest'));
 	}
-	
 	// register Foo_Widget widget
 	function register_widget() {
 		require_once('widget.php');
